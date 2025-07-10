@@ -48,15 +48,14 @@ app.use(express.json())
 
 
 
-//function success(){
- //   console.log("sever isstaerted!")
-//}
-//app.listen(5000, success)
-
-
+function success(){
+    console.log("sever isstaerted!")
+}
+app.listen(5000, success)
 //create arrow function(no need function name this type function)
-app.listen(5000, () => {
+
+/*app.listen(5000, () => {
   console.log("server is started !");
 });
 
-setInterval(() => {}, 1000 * 60 * 60);
+setInterval(() => {}, 1000 * 60 * 60);*/
