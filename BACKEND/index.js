@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import Student from "./model/student.js";
+import studentRouter from "./routes/studentRouter.js";
 
 const app = express();
 
@@ -20,51 +20,14 @@ mongoose.connect(connectionString) //create data base connection
   }
 )
 
+app.use("/students",studentRouter)
 
 
-app.get("/",
-      (req, res)=>{
-
-        console.log("request body",req.body);
-        console.log("get request  recived");
-
-        res.json(   //send the message sender
-            {
-                 message : "get reques fetch sucessful"
-            }
-        )
-     });
 
 
-// POST Route
 
-app.post("/", (req, res) => {
 
-  const student = new Student(
-    {
-      name : req.body.name,
-      age : req.body.age,
-      city : req.body.city
-    }
-  ) 
-    student.save(). then(
-      ()=>{
-        res.json(
-          {message : "studet create sucsess fully"}
-        )
-      }
-    ).catch(
-      ()=>{
-        res.json(
-          {message : "studet create error"}
-        )
-      }
-    )
 
-  console.log("Data:", req.body); // Logs data sent from Postman
-
-  //res.json({ message: "POST request received", data: req.body });
-});
 
 
 // DELETE Route
