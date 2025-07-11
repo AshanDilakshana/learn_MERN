@@ -1,5 +1,4 @@
 import express from 'express';
-import Student from '../model/student.js';
 import { createStudent, getStudent } from '../controllers/studentController.js';
 
 const studentRouter = express.Router();
