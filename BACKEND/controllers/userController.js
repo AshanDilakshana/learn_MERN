@@ -33,8 +33,10 @@ function logingUser(req, res) {
     .then(
         (user) => {
              if (user == null){
-            message: 'User not found'
-        } 
+                res.json({
+                    message: 'User not found'
+                });
+             }
              else{
                 const isPasswordValid = bcrypt.compareSync(req.body.password, user.password); // Compare the hashed password
                 if(isPasswordValid){
