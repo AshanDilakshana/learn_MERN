@@ -8,6 +8,7 @@ studentRouter.get("/",getStudent);
 studentRouter.post('/',createStudent);
 
 
+
 studentRouter.put('/',()=>{
     
         console.log("put ok")
