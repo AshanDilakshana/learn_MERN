@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import studentRouter from "./routes/studentRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 const app = express();
 
@@ -9,34 +10,20 @@ app.use(express.json()) //middle ware *eawana data tika piliwelata hadana ek kar
 const connectionString = "mongodb+srv://admin:123@study.i1em97j.mongodb.net/?retryWrites=true&w=majority&appName=study"
 
 mongoose.connect(connectionString) //create data base connection 
-.then(
-  ()=>{
+.then(  ()=>{
      console.log("database connected !");
   }
  
-).catch(
-  ()=>{
+).catch(  ()=>{
     console.log("database connction err");
   }
 )
 
+
 app.use("/students",studentRouter)
+app.use("/users", userRouter);  
 
 
-
-
-
-
-
-
-
-// DELETE Route
-app.delete("/", (req, res) => {
-
-  console.log("DELETE request received");
-
-  res.json({ message: "DELETE request acknowledged" });
-});
 
 
 

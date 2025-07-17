@@ -10,7 +10,6 @@ studentRouter.post('/',createStudent);
 
 
 studentRouter.put('/',()=>{
-    
         console.log("put ok")
     }
 )
