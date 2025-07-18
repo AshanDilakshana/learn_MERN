@@ -1,5 +1,6 @@
 import User from '../model/user.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 
 function createUser(req,res){
@@ -25,11 +26,11 @@ function createUser(req,res){
                 
             });
         });
-}
+};
 
-
+// Function to log in a user    
 function logingUser(req, res) {
-    User.findOne({ email: req.body.email }) 
+    User.findOne({ email : req.body.email }) 
     .then(
         (user) => {
              if (user == null){
@@ -40,24 +41,36 @@ function logingUser(req, res) {
              else{
                 const isPasswordValid = bcrypt.compareSync(req.body.password, user.password); // Compare the hashed password
                 if(isPasswordValid){
-                    res.json({
-                        message: 'Login successful',
-                        
-                    })
+
+                    // Generate a JWT token
+                    const token = jwt.sign({ 
+                        email: user.email,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        role: user.role,
+                        isEmailVerified: user.isEmailVerified,
+                    },"JwtSecretKey00" //secret key for signing token
+                )
+                 res.status(200).json({
+                    message: 'Login successful',
+                    token: token, 
+                  })
                 }else{
-                    res.json({
+                    res.status(403).json({
                         message: 'Invalid password'
                     })
                 }
              }
         })
     .catch(() => {
-        res.json({
+        res.status(401).json({
             message: 'Error logging in user'
         });
     })
 
 };
+
+
 
 
 export { createUser , logingUser };

@@ -1,6 +1,21 @@
 import Student from "../model/student.js"
+                                          
 
 export function createStudent (req, res){
+                    // only admin can create student(rest)
+  if(req.user == null){
+    res.status(403).json({
+      message: "unauthorized user plese try angain"
+    })
+    return //stop the execution
+  }
+  if(req.user.role != "admin"){
+    res.status(401).json({
+      message: "you are not allowed to create student"
+    })
+    return //stop the execution
+  }
+
   const student = new Student(
     {
       name : req.body.name,
