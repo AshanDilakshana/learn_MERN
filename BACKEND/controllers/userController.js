@@ -72,6 +72,18 @@ function logingUser(req, res) {
 
 
 
+function IsAddmin(req){
+    
+    if(req.user == null){
+        return false;
+    }
+
+    if(req.user == null){
+        return false
+    }
+
+    return true;
+}
 
 
 
@@ -86,5 +98,4 @@ function logingUser(req, res) {
 
 
 
-
-export { createUser , logingUser };
+export { createUser , logingUser , IsAddmin };
