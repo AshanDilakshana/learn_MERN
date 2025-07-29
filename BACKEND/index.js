@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import studentRouter from "./routes/studentRouter.js";
 import userRouter from "./routes/userRouter.js";
 import jwt from "jsonwebtoken";
+import productRouter from "./routes/productRouter.js";
 
 const app = express();
 
@@ -35,10 +36,10 @@ app.use(   //authentication middleware
 )
 
 
-
+//create data base connection 
 const connectionString = "mongodb+srv://admin:123@study.i1em97j.mongodb.net/?retryWrites=true&w=majority&appName=study"
 
-mongoose.connect(connectionString) //create data base connection 
+mongoose.connect(connectionString) 
 .then(  ()=>{
      console.log("database connected !✅");
   }).catch(  ()=>{
@@ -47,8 +48,13 @@ mongoose.connect(connectionString) //create data base connection
 )
 
 
-app.use("/students",studentRouter)
+
+
+app.use("/students",studentRouter);
 app.use("/users", userRouter);  
+app.use("/products",productRouter);
+
+
 
 
 
