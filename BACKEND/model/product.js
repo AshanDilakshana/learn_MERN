@@ -5,9 +5,15 @@ const productSchema = new mongoose.Schema(
     product:{
         type:String,
         require:true,
-        unique:true
-
+        unique:true,
     },
+
+    productID: {
+      type: String, 
+      required: true,
+      unique: true,
+    },
+
     productName: {
       type: String,
       required: true,
@@ -49,4 +55,5 @@ const productSchema = new mongoose.Schema(
 }
 )
 const product = mongoose.model('Product', productSchema);
+
 export default product;

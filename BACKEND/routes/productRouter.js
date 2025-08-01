@@ -1,11 +1,17 @@
-import experss from 'experss';
-import { createproduct ,getProduct } from '../controllers/productController.js';
+import express from 'express';
+import { createproduct ,getProduct,deleteProduct,updateProduct,getProductById } from '../controllers/productController.js';
 
-const  productRouter = experss.router();
+const  productRouter = express.Router();
 
 
-productRouter.get("/",getProduct)
-productRouter.post("/",createproduct)
+productRouter.get("/",getProduct);
+productRouter.post("/createProduct",createproduct);
+
+
+productRouter.delete('/:productId', deleteProduct);
+productRouter.put('/:productID', updateProduct); 
+productRouter.get('/:productID', getProductById); 
+
 
 
 
