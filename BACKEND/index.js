@@ -4,8 +4,15 @@ import studentRouter from "./routes/studentRouter.js";
 import userRouter from "./routes/userRouter.js";
 import jwt from "jsonwebtoken";
 import productRouter from "./routes/productRouter.js";
+import cors from "cors";
+import dotenv from "dotenv";
+
+
+dotenv.config(); //load environment variables from .env file
 
 const app = express();
+
+app.use(cors({})); //enable cors for all routes
 
 app.use(express.json()) //middle ware *ewana data tika piliwelata hadana ek karanne
 
@@ -17,7 +24,7 @@ app.use(   //authentication middleware
       token = token.replace("Bearer ", "");
       //console.log("token", token);
 
-        jwt.verify(token, "JwtSecretKey00",(err,decoded)=>{ //verify the token and decode it
+        jwt.verify(token, process.env.jwtSecretKey,(err,decoded)=>{ //verify the token and decode it
 
             if(decoded == null){
               res.json({
@@ -37,7 +44,7 @@ app.use(   //authentication middleware
 
 
 //create data base connection 
-const connectionString = "mongodb+srv://admin:123@study.i1em97j.mongodb.net/?retryWrites=true&w=majority&appName=study"
+const connectionString = process.env.MONGO_URI 
 
 mongoose.connect(connectionString) 
 .then(  ()=>{
@@ -50,9 +57,9 @@ mongoose.connect(connectionString)
 
 
 
-app.use("/students",studentRouter);
-app.use("/users", userRouter);  
-app.use("/products",productRouter);
+app.use("/api/students",studentRouter);
+app.use("/api/users", userRouter);  
+app.use("/api/products",productRouter);
 
 
 

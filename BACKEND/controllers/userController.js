@@ -54,6 +54,13 @@ function logingUser(req, res) {
                  res.status(200).json({
                     message: 'Login successful',
                     token: token, 
+                    user: {
+                        email: user.email,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        role: user.role,
+                        isEmailVerified: user.isEmailVerified
+                    }
                   })
                 }else{
                     res.status(403).json({
