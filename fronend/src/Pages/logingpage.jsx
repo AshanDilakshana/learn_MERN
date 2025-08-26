@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -18,7 +19,7 @@ export default function LoginPage() {
            );
            
              const user = response.data.user;
-             Toast.success("Login successful!");
+             toast.success("Login successful!");
                 if (user.role == "admin") {
                     navigate("/admin");
                 }else if (user.role == "user") {
@@ -27,7 +28,7 @@ export default function LoginPage() {
                 } catch(e){
                     console.error("Login failed", e);
                    // alert("Login failed, please check your credentials.");
-                   Toast.error("Login failed, please check your credentials.");}
+                   toast.error("Login failed, please check your credentials.");}
     }
     return (
         <div className="w-full h-[100vh] bg-[url('/bg.jpg')] bg-cover bg-center flex">
