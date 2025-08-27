@@ -10,7 +10,7 @@ import dotenv from "dotenv";
 
 dotenv.config(); //load environment variables from .env file
 
-const app = express();
+const app = express(); 
 
 app.use(cors({})); //enable cors for all routes
 
