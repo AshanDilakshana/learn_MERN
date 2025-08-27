@@ -1,7 +1,42 @@
 @import "tailwindcss";
-@theme{
-    --color-acensed: #34699A;
-
-    --color-secondary: #34699A;
-    --color-background: #9ECAD6;
+@theme {
+  --color-acensed: #34699A;
+  --color-secondary: #34699A;
+  --color-background: #9ECAD6;
+  --color-accent: #2DD4BF;
+  --color-acensed-light: #4A8ABF;
+  --color-text-primary: #1F2A44;
+  --color-neutral: #E5E7EB;
 }
+
+@layer base {
+  :root {
+    --scrollbar-thumb: #34699A;
+    --scrollbar-track: #E5E7EB;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 3px;
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: var(--color-acensed-light);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
