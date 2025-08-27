@@ -2,12 +2,6 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
-    product:{
-        type:String,
-        require:true,
-        unique:true,
-    },
-
     productID: {
       type: String, 
       required: true,
@@ -20,7 +14,7 @@ const productSchema = new mongoose.Schema(
     },
 
     altanativeNames:{
-        tyep : [String],
+        type: [String],
         default : []
     },
 
@@ -39,17 +33,21 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
 
-    productquantity: {
+    category: {
+      type: String,
+      required: true,
+    },
+    stock: {
       type: Number,
       required: true,
-      default: 1,
+      default: 0,
     },
-
-    productImage: {
+      
+      productImage: {
       type: [String],
       default:[],
       required: true,
-      default: 'https://example.com/default-product-image.jpg',
+      default: ['https://example.com/default-product-image.jpg'],
     },
 
 }

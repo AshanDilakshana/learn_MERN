@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaEdit, FaPlus, FaRegTrashAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export default function AdminproductsPage() {
+
   const [products, setproducts] = useState([]);
+  
+  const navigate = useNavigate(); // to navigate to another page smoothly
+  
 
   useEffect(() => { //privent allwase backend data feching // useEffect(() => {},[])
     try {
@@ -24,7 +28,7 @@ export default function AdminproductsPage() {
   return (
     <div className="w-full min-h-full ">
       <Link
-        to="/addmin/add-product"
+        to="/admin/add-product"
         className="fixed right-[65px]  bottom-[50px] text-5xl hover:text-blue-500">
         <FaPlus />
       </Link>
@@ -45,17 +49,19 @@ export default function AdminproductsPage() {
             return (
               <tr key={index}>
                 <td>
-                  <img src="logo.png" className="w-16 h-16 "></img>
+                  <img src={item.productImage[0]} className="w-16 h-16 "></img>
                 </td>
                 <td> {item.productID}</td>
                 <td>{item.productName}</td>
                 <td>{item.productPrice}</td>
                 <td>{item.LabledPrice}</td>
-                <td>no</td>
+                <td>{item.category}</td>
                 <td>
                   <div className="flex gap-2 justify-center items-center">
                     <FaRegTrashAlt className="hover:text-red-500" />
-                    <FaEdit className="hover:text-green-400" />
+                    <FaEdit onClick={()=>{
+                      navigate("/admin/update-product",{state:item}) // pass the whole product item to the update page
+                    }} className="hover:text-green-400" />
                   </div>
                 </td>
               </tr>

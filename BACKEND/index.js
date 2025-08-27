@@ -66,12 +66,6 @@ app.use("/api/products",productRouter);
 
 
 
-
-
-
-
-
-
 function success(){
     console.log("sever is Started!✅")
 }

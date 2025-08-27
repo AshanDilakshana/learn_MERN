@@ -8,7 +8,6 @@ import Logingpage from './Pages/logingpage.jsx'
 import { Toaster } from 'react-hot-toast';
 import Test from './Pages/Test.jsx'
 
-
 function App() {
   
   return ( 

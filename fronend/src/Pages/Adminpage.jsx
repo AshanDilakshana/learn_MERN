@@ -5,6 +5,8 @@ import { FaRegUser } from "react-icons/fa";
 import { CiShoppingCart } from "react-icons/ci";
 
 import AdminproductsPage from './admin/AdminproductsPage.jsx';
+import AdminAddNewProduct from './admin/adminAddNewProduct.jsx';
+import AdminUpdateProduct from './admin/AdminUpdateProduct.jsx';
 
 export default function Adminpage() {
 
@@ -12,7 +14,7 @@ export default function Adminpage() {
         <div className="w-full h-full bg-white flex p-2">
             <div className="w-[300px] h-full bg-secondary flex flex-col items-center rounded-2xl">
                 <div className='flex flex-row w-[90%] h-[100px] bg-amber-700 rounded-2xl'>
-                    <image src="/logo1.png"
+                    <img src="logo1.png" 
                      alt="Logo" 
                      className=' h-[70px] ' />
                     <h1 className='text-white text-2xl font-bold m-auto'>Admin Dashboard</h1>
@@ -45,6 +47,8 @@ export default function Adminpage() {
                 <Route path='/products' element={<AdminproductsPage/>} />
                 <Route path='/orders' element={<h1>Orders</h1>} />
                 <Route path='/users' element={<h1>Users</h1>} />
+                <Route path='/add-product' element={<AdminAddNewProduct/>} />
+                <Route path='/update-product' element={<AdminUpdateProduct/>} />
                 <Route path='/*' element={<h1>NOT FOUND 404</h1>} />
              </Routes>
             </div>

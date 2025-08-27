@@ -73,8 +73,10 @@ export  async function deleteProduct(req, res){
         return;
     }
 }
-
+///update
 export async function updateProduct(req,res){
+    
+
     try{
         const productID = req.params.productID;
         const updateData =  req.body;
