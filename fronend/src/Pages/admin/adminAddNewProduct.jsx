@@ -8,7 +8,7 @@ export default function AdminAddNewProduct() {
   const [productID, setproductID] = useState("");
   const [productName, setProductName] = useState("");
   const [price, setprice] = useState("");
-  const [labledPrice, setlabledPrice] = useState(0);
+  const [labledPrice, setlabledPrice] = useState("");
   const [description, setdescription] = useState("");
   const [altName, setaltName] = useState("");
   const [category, setcategory] = useState("creem");
@@ -31,13 +31,13 @@ export default function AdminAddNewProduct() {
       const urls = await Promise.all(uploadPromises);
       const Alternative = altName.split(",");
       const product = {
-        productID,
-        productName,
+        productID:productID,
+        productName:productName,
         productPrice: price,
         LabledPrice: labledPrice,
         productDescription: description,
-        category,
-        stock,
+        category:category,
+        stock:stock,
         altanativeNames: Alternative,
         productImage: urls,
       };

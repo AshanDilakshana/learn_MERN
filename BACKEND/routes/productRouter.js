@@ -8,7 +8,7 @@ productRouter.get("/",getProduct);
 productRouter.post("/createProduct",createproduct);
 
 
-productRouter.delete('/DeleteProduct/:productId', deleteProduct);
+productRouter.delete('/:productId', deleteProduct);
 productRouter.put('/:productID', updateProduct); 
 productRouter.get('/:productID', getProductById); 
 
