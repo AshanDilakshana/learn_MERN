@@ -101,14 +101,15 @@ export async function updateProduct(req, res) {
 export async function getProductById(req, res) {
   try {
     const productId = req.params.productID;
+    
 
-    const Product = await product.findOne({ productID: productId });
+    const product = await Product.findOne({ productID: productId });
 
-    if (Product == null) {
+    if (product == null) {
       return res.status(404).json({
         message: "product not found",
       });
-    } else res.json(Product);
+    } else res.json(product);
 
   } catch (err) {
     console.error(err);
