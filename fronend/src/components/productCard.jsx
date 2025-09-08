@@ -30,7 +30,7 @@ export default function ProductCard(props) {
 					</div>
 				</div>
 				<Link 
-					to={`/products/${product.productID}`} 
+					to={`/OverView/${product.productID}`} 
 					className="w-full h-10 mt-3 bg-accent text-white rounded-lg flex items-center justify-center text-sm font-medium hover:bg-acensed-light transition-colors duration-200"
 				>
 					View Product
